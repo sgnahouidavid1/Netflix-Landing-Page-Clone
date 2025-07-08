@@ -1,0 +1,294 @@
+/* Using the downloaded font Consolas using the @font-face rule within the css file
+Then apply the font to the desired elements using the font-family property */
+@font-face {
+    font-family: 'Consolas';
+    src: url('../fonts/Consolas.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+/* Using the downloaded font BebasNeue using the @font-face rule within the css file
+Then apply the font to the desired elements using the font-family property */
+@font-face {
+    font-family: 'BebasNeue';
+    src: url('../font/BebasNeue.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Inter-Bold';
+    src: url('../font/Inter_18pt-Bold.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Inter-Regular';
+    src: url('../font/Inter_18pt-Regular.ttf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+/*Custom CSS Variables*/
+:root {
+    --primary-font: 'BebasNeue', sans-serif;
+    --secondary-font: 'Consolas', monospace, sans-serif;
+    --third-font: 'Inter-Regular', 'sans-serif';
+    --fourth-font: 'Inter-Bold', 'sans-serif';
+    --black-color: black;
+    --white-color: white;
+    --netflix-red: #E50914;
+    --background-shadow: linear-gradient(0deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, 0.7) 60%)
+
+}
+
+* { 
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: var(--primary-font);
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: hidden;
+}
+
+.top-container {
+    width: 100%;
+    height: 100vh; /* vh is a relative length unit,
+    meaning its size is calculated in relation to the viewport's height (the visible area of the browser window).
+    Therefore, 100vh equals 100% of the viewport's height. */
+    position: relative; /* need to set the position to relative to have have a shadow overlayed on top of the background image. */
+    background: url('../images/background-image.png') no-repeat center center/cover;
+
+}
+.top-container::after { /*The CSS: :before pseudo-element inserts some content before the content of the specified element. */
+    content: ""; /* Necessary for pseudo-elements ::before and ::after */
+    position: absolute; /* set the position to absolute to allow the the background shadow to be overlayed on top of the background image. */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: var(--background-shadow);
+    /* background: rgba(0, 0, 0, 0.6); */
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+}
+
+.navbar {
+    position: relative;
+    width: 100%;
+    background: transparent;
+    padding: 20px 150px 30px;
+    z-index: 2;
+
+}
+.navbar .nav-menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.navbar .logo {
+    width:  128px;
+    height: 40px;
+}
+.navbar .menu-buttons {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    list-style: none;
+}
+
+.navbar .language-selector {
+    position: relative;
+}
+
+.navbar .language-selector-button {
+    /* Style your button */
+    font-size: 18px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    color: var(--white-color);
+    background: rgba(0,0,0,0.5);
+    
+}
+.navbar .language-selector-button .translate-icon {
+    width: 16px;
+    height: 14px;
+    margin-right: 5px;
+}
+.navbar .language-selector-button .language-dropdown-icon {
+    width: 14px;
+    height: 12px;
+    margin-left: 5px;
+}
+
+.navbar .language-dropdown {
+    position: absolute;
+    top: 100%;
+    left:0;
+    right: 0;
+    display: none;
+    /* Initially hidden */
+    /* Style your dropdown list */
+}
+.navbar .language-dropdown ul {
+    border-radius: 5px;
+}
+
+.navbar .language-dropdown li {
+    /* Style list items */
+    padding: 5px 5px 0px 5px;
+    background: rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #ccc; /* Light gray border line */
+}
+
+.navbar .language-dropdown a {
+    /* Style links */
+    font-size: 18px;
+    text-align: center;
+    font-family: var(--primary-font);
+    color: var(--white-color);
+    
+}
+
+.navbar .language-dropdown img {
+    /* Style flag images */
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+}
+
+.hero {
+    position: relative;
+    padding-top: 100px;
+}
+
+.hero .hero-heading {
+    position: relative;
+    z-index: 2;
+    padding: 10px 30%;
+}
+.hero .hero-subtext {
+    position: relative;
+    z-index: 2;
+    padding: 10px 30% 30px;
+}
+.hero .hero-input-button {
+    position: relative;
+    z-index: 2;
+    padding: 10px 30%;
+    display: flex;
+    
+   
+    
+}
+
+.hero .hero-input-button .field-holder {
+    position: relative;
+    padding-right: 10px;
+
+}
+.hero .hero-input-button .field-holder input {
+    border: 1px solid #dfdfdf;
+    outline: none;
+    border-radius: 5px;
+    padding-top: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--white-color);
+    text-align: start;
+}
+
+.hero .hero-input-button .field-holder input:focus + label, .hero .hero-input-button .field-holder input:valid + label {
+    font-size: .75em;
+    top: -15px;
+    pointer-events: none;
+}
+
+
+.hero .hero-input-button .field-holder label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    color: var(--white-color);
+    cursor: text;  
+    
+
+}
+
+.hero .field-holder label, .hero .field-holder input {
+    font-size: 1.2rem;
+    font-family: var(--third-font);
+    letter-spacing: 1px;
+    padding-top: 5px;
+    height: 60px;
+    width: 26rem;
+    padding-left: 20px;
+    
+}
+
+.hero .btn {
+    align-self:center;
+    font-size: 1.5rem;
+    padding: 18px 20px;
+}
+
+
+
+/* Button Styles Classes */
+.btn {
+    border-radius: 5px;
+    font-size: 1.1rem;
+    color: var(--white-color);
+    font-family: var(--fourth-font);
+    text-decoration: none;
+    text-align: center;
+    line-height: 1.0;
+    padding: 6px 20px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.btn-red {
+    background: var(--netflix-red);
+}
+
+/* Text Styles Classes */
+.text-xxl {
+    color: var(--white-color);
+    font-size: 4.0rem;
+    letter-spacing: 5px;
+    line-height: normal;
+}
+
+.text-lg {
+    color: var(--white-color);
+    font-size: 1.5rem;
+    letter-spacing: 3px;
+    
+}
+
+.text-md {
+    font-size: 1.2rem;
+    color: var(--white-color);
+    position: relative;
+    z-index: 2;
+    letter-spacing: 2px;
+}
+
+.text-center {
+    text-align: center;
+}

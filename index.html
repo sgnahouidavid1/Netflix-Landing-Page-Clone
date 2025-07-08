@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netflix</title>
+    <!-- Import Favicon icon into the website -->
+    <link rel="shortcut icon" href="images/netflix-favicon.ico" type="image/x-ico">
+    <!-- Import styles.css file into the website -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Import Font Awesome for icons from cdnjs.com website -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Importing Flaticons.com for icons from the Flaticons website. -->
+    <link rel="stylesheet" href="path/to/your/css/flaticon.css">
+    <!-- Importing the language selector css styles into the website -->
+    <!-- <link rel="stylesheet" href="css/lang-selector-style.css"> -->
+
+</head>
+<body>
+    <div class="top-container">
+        <!-- Navigation Bar Section -->
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="nav-menu">
+                    <a href="index.html"><img src="images/netflix-logo-512x512.png" class="logo" alt="Netflix Image Logo"></a>
+                    <!-- Language selector picker -->
+                    <div class="menu-buttons">
+                        <div class="language-selector">
+                            <button class="language-selector-button"><img class="translate-icon" src="images/translate-icon-32x32.png" alt="translate-icon">
+                                English
+                                <img class="language-dropdown-icon" src="images/down-arrow-image-512x512.png" alt="language-dropdown-icon">
+                            </button>
+                            <ul class="language-dropdown">
+                                <li><a href="#">English</a></li>
+                                <li><a href="#">Español</a></li>
+                                <li><a href="#">Français</a></li>
+                            </ul>
+                        </div>                      
+                        <a class="btn btn-red" href="index.html">Sign in</a>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <!-- Hero section -->
+        <section class="hero">
+            <div class="hero-container">
+                <div class="hero-content">
+                    <h1 class="hero-heading text-xxl text-center">Unlimited movies, TV shows, and more</h1>
+                    <p class="hero-subtext text-lg text-center">Starts at $7.99. Cancel anytime.</p>
+                    <p class="text-md text-center">Ready to watch? Enter your email to create or restart your membership.</p>
+                    <div class="hero-input-button">
+                        <div class="field-holder">
+                            <input id="email" required>
+                            <label for="email">Email address</label>
+                        </div>
+                        <a class="btn btn-red" href="index.html">Get Started</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    <!-- Import lang-selector-jscript.js file into the website of the language selector -->
+    <!-- <script src="js/lang-selector-jscript.js"></script> -->
+    <script src="js/javascript.js"></script>
+</body>
+</html>
