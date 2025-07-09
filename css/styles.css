@@ -33,10 +33,14 @@ Then apply the font to the desired elements using the font-family property */
     --secondary-font: 'Consolas', monospace, sans-serif;
     --third-font: 'Inter-Regular', 'sans-serif';
     --fourth-font: 'Inter-Bold', 'sans-serif';
-    --black-color: black;
+    --black-color: #000;
     --white-color: white;
     --netflix-red: #E50914;
-    --background-shadow: linear-gradient(0deg, rgba(0, 0, 0, .9), rgba(0, 0, 0, 0.7) 60%)
+    --second-background-shadow: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.6));
+    --second-background-color: linear-gradient(180deg, black, var(--netflix-red), black);
+    --third-background-color: linear-gradient(to right, var(--netflix-red), var(--white-color), var(--netflix-red));
+    --background-shadow: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.5));
+    --box-background-shadow: inset 120px 100px 250px #000000, inset -120px -100px 250px #000000;
 
 }
 
@@ -59,8 +63,12 @@ body {
     meaning its size is calculated in relation to the viewport's height (the visible area of the browser window).
     Therefore, 100vh equals 100% of the viewport's height. */
     position: relative; /* need to set the position to relative to have have a shadow overlayed on top of the background image. */
-    background: url('../images/background-image.png') no-repeat center center/cover;
-
+    
+    /* linear-gradient(to bottom, transparent, #000) allow a overlayed of the black color at the bottom of the background image 
+    allowing the background image to appear to be fading out. */
+    background-image: linear-gradient(to bottom, transparent,#000), url('../images/background-image.png');
+    background-repeat: no-repeat center center/cover;
+    box-shadow: var(--box-background-shadow);
 }
 .top-container::after { /*The CSS: :before pseudo-element inserts some content before the content of the specified element. */
     content: ""; /* Necessary for pseudo-elements ::before and ::after */
@@ -71,10 +79,29 @@ body {
     height: 100%;
     z-index: 1;
     background: var(--background-shadow);
-    /* background: rgba(0, 0, 0, 0.6); */
+    
+}
+.mid-container {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    background: var(--second-background-color);
+    padding: 50px 10% 0px;
+    font-family: var(--fourth-font);
 }
 
-a {
+.mid-container::after {
+    content: ""; /* Necessary for pseudo-elements ::before and ::after */
+    position: absolute; /* set the position to absolute to allow the the background shadow to be overlayed on top of the background image. */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: var(--second-background-shadow);
+}
+
+a { 
     text-decoration: none;
 }
 
@@ -86,7 +113,7 @@ img {
     max-width: 100%;
 }
 
-.navbar {
+.top-container .navbar {
     position: relative;
     width: 100%;
     background: transparent;
@@ -94,27 +121,27 @@ img {
     z-index: 2;
 
 }
-.navbar .nav-menu {
+.top-container .navbar .nav-menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.navbar .logo {
+.top-container .navbar .logo {
     width:  128px;
     height: 40px;
 }
-.navbar .menu-buttons {
+.top-container .navbar .menu-buttons {
     display: flex;
     align-items: center;
     gap: 20px;
     list-style: none;
 }
 
-.navbar .language-selector {
+.top-container .navbar .language-selector {
     position: relative;
 }
 
-.navbar .language-selector-button {
+.top-container .navbar .language-selector-button {
     /* Style your button */
     font-size: 18px;
     padding: 5px 10px;
@@ -123,18 +150,18 @@ img {
     background: rgba(0,0,0,0.5);
     
 }
-.navbar .language-selector-button .translate-icon {
+.top-container .navbar .language-selector-button .translate-icon {
     width: 16px;
     height: 14px;
     margin-right: 5px;
 }
-.navbar .language-selector-button .language-dropdown-icon {
+.top-container .navbar .language-selector-button .language-dropdown-icon {
     width: 14px;
     height: 12px;
     margin-left: 5px;
 }
 
-.navbar .language-dropdown {
+.top-container .navbar .language-dropdown {
     position: absolute;
     top: 100%;
     left:0;
@@ -143,18 +170,18 @@ img {
     /* Initially hidden */
     /* Style your dropdown list */
 }
-.navbar .language-dropdown ul {
+.top-container .navbar .language-dropdown ul {
     border-radius: 5px;
 }
 
-.navbar .language-dropdown li {
+.top-container .navbar .language-dropdown li {
     /* Style list items */
     padding: 5px 5px 0px 5px;
     background: rgba(0, 0, 0, 0.1);
     border-bottom: 1px solid #ccc; /* Light gray border line */
 }
 
-.navbar .language-dropdown a {
+.top-container .navbar .language-dropdown a {
     /* Style links */
     font-size: 18px;
     text-align: center;
@@ -163,29 +190,29 @@ img {
     
 }
 
-.navbar .language-dropdown img {
+.top-container .navbar .language-dropdown img {
     /* Style flag images */
     width: 20px;
     height: 15px;
     margin-right: 5px;
 }
 
-.hero {
+.top-container .header {
     position: relative;
     padding-top: 100px;
 }
 
-.hero .hero-heading {
+.top-container .header .header-heading {
     position: relative;
     z-index: 2;
     padding: 10px 30%;
 }
-.hero .hero-subtext {
+.top-container .header .header-subtext {
     position: relative;
     z-index: 2;
     padding: 10px 30% 30px;
 }
-.hero .hero-input-button {
+.top-container .header .header-input-button {
     position: relative;
     z-index: 2;
     padding: 10px 30%;
@@ -195,12 +222,12 @@ img {
     
 }
 
-.hero .hero-input-button .field-holder {
+.top-container .header .header-input-button .field-holder {
     position: relative;
     padding-right: 10px;
 
 }
-.hero .hero-input-button .field-holder input {
+.top-container .header .header-input-button .field-holder input {
     border: 1px solid #dfdfdf;
     outline: none;
     border-radius: 5px;
@@ -210,14 +237,14 @@ img {
     text-align: start;
 }
 
-.hero .hero-input-button .field-holder input:focus + label, .hero .hero-input-button .field-holder input:valid + label {
+.top-container .header .header-input-button .field-holder input:focus + label, .header .header-input-button .field-holder input:valid + label {
     font-size: .75em;
     top: -15px;
     pointer-events: none;
 }
 
 
-.hero .hero-input-button .field-holder label {
+.top-container .header .header-input-button .field-holder label {
     position: absolute;
     top: 0;
     left: 0;
@@ -229,7 +256,7 @@ img {
 
 }
 
-.hero .field-holder label, .hero .field-holder input {
+.top-container .header .field-holder label, .top-container .header .field-holder input {
     font-size: 1.2rem;
     font-family: var(--third-font);
     letter-spacing: 1px;
@@ -240,13 +267,57 @@ img {
     
 }
 
-.hero .btn {
+.top-container .header .btn {
     align-self:center;
     font-size: 1.5rem;
     padding: 18px 20px;
 }
+.mid-container .box-1 {
+    display: flex;
+    align-items: center; 
+    transition: 0.3s;
+    
+}
+
+.mid-container .box-1:hover {
+    transform: scale(1.08); /* Scales up elements */
+    position: relative;
+    z-index: 2;
+}
+
+.mid-container .price-box {
+    width: 90%;
+    padding: 20px 20px 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    background: var(--third-background-color);
+    
+}
 
 
+.mid-container .box-1 .lilpop-image{
+    padding-right: 20px;
+    width: 120px;
+    height: 100px;
+    
+}
+.mid-container .box-1 .lilpop-image:hover {
+}
+
+.mid-container .price-box .price-box-text .price-box-text-heading {
+    
+}    
+
+.mid-container .price-box .price-box-text .price-box-text-subtext{
+    margin-top: 10px;
+    
+}
+.mid-container .price-box .btn {
+    padding: 18px;
+
+}
 
 /* Button Styles Classes */
 .btn {
@@ -264,6 +335,8 @@ img {
 
 .btn-red {
     background: var(--netflix-red);
+    position: relative;
+    z-index: 2;
 }
 
 /* Text Styles Classes */
@@ -272,12 +345,14 @@ img {
     font-size: 4.0rem;
     letter-spacing: 5px;
     line-height: normal;
+    text-shadow: 2px 2px 4px #000000; /* Allows the text to have a black shadow underneath it */
 }
 
 .text-lg {
     color: var(--white-color);
     font-size: 1.5rem;
     letter-spacing: 3px;
+    text-shadow: 2px 2px 4px #000000; /* Allows the text to have a black shadow underneath it */
     
 }
 
@@ -287,6 +362,16 @@ img {
     position: relative;
     z-index: 2;
     letter-spacing: 2px;
+    text-shadow: 2px 2px 4px #000000; /* Allows the text to have a black shadow underneath it */
+}
+
+.text-sm {
+    font-size: 1rem;
+    color: var(--white-color);
+    position: relative;
+    z-index: 2;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px #000000; /* Allows the text to have a black shadow underneath it */
 }
 
 .text-center {
